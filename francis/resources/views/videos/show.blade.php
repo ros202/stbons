@@ -9,6 +9,7 @@
 	  poster="http://video-js.zencoder.com/oceans-clip.png"
 	  data-setup='{"example_option":true}'>
 	 <source src="{{ $video->videoFile }}" type='video/mp4' />
+	 <p><i class="glyphicon glyphicon-heart"></i> Upvote!</a></li>
 	 <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
 	</video>
 
