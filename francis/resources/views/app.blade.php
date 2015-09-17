@@ -21,19 +21,10 @@
 </head>
 
 <body>
-<!--<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-2"><img src="logo.png" class="img-responsive" alt="St Bonaventure's"></div>
-		<div class="col-md-4"><a id="logo" href="/"><h1 class="bg-primary">&nbsp; St Bonaventure's</h1></a></div>
-		<div class="col-md-3"><a href="/"><h3><i class="glyphicon glyphicon-home"></i>&nbsp; Home</h3></a></div>
-		<div class="col-md-3"><a href="/upload"><h3><i class="glyphicon glyphicon-film"></i>&nbsp; Add your own video!</h3></a></div>
-	</div>
-</div>
--->
 
 <nav class="navbar navbar-default">
   <div class="container-fluid">
-    <!-- Logo and toggle get grouped for better mobile display -->
+    <!-- Logo and toggle grouped  -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
@@ -44,7 +35,7 @@
       <a class="navbar-brand"  href="#">St Bonaventure's</a>
     </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
+    <!-- Nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-left">
 		<li><a href="/"><i class="glyphicon glyphicon-home"></i>&nbsp;&nbsp; Home</a></li>
@@ -62,7 +53,7 @@
 
 @yield('content')
 
-<div id="copyright text-right"><p class="text-muted">© Copyright 2015 Ross Harrison</p></div>
+<div id="copyright text-right"><p class="text-muted">&nbsp;&nbsp;© Copyright 2015 Ross Harrison</p></div>
 
 </body>
 </html>
