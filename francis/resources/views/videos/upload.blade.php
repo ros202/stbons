@@ -14,7 +14,7 @@
 			<div class="form-group">
 				<span class="text-primary"><span class="glyphicon glyphicon-education"></span></span>&nbsp;{!! Form::label('className', 'Which class are you in?') !!}
 				<br>
-				{!! Form::select('className', array('RH', 'RM', '1H', '1MS', '2T', '2WR', '3J', '3T', '4C', '4SA', '5K', '5P', '6D', '6GW'), ['class' =>'form-control']) !!}
+				{!! Form::select('className', array('RH' => 'RH', 'RM', '1H', '1MS', '2T', '2WR', '3J', '3T', '4C', '4SA', '5K', '5P', '6D', '6GW'), ['class' =>'form-control']) !!}
 			</div>
 			
 			<div class="form-group">
