@@ -12,13 +12,24 @@
 			</div>
 			
 			<div class="form-group">
-				<span class="glyphicon glyphicon-education"></span>&nbsp;{!! Form::label('className', 'Which class are you in?:') !!}
-				{!! Form::select('className', array('RM', 'RH', '1H', '1MS', '2T', '2WR', '3J', '3T', '4SA', '4C', '5P', '5K', '6D', '6GW'), ['class' =>'form-control']) !!}
+				<span class="glyphicon glyphicon-education"></span>&nbsp;{!! Form::label('className', 'Which class are you in?') !!}
+				<br>
+				{!! Form::select('className', array('RH', 'RM', '1H', '1MS', '2T', '2WR', '3J', '3T', '4C', '4SA', '5K', '5P', '6D', '6GW'), ['class' =>'form-control']) !!}
 			</div>
 			
 			<div class="form-group">
-				<span class="glyphicon glyphicon-home"></span>&nbsp;{!! Form::label('houseName', 'Which house are you in?:') !!}
+				<span class="glyphicon glyphicon-home"></span>&nbsp;{!! Form::label('houseName', 'Which house are you in?') !!}
 				{!! Form::text('houseName', "", ['class' =>'form-control']) !!}
+			</div>
+			
+			<div class="form-group">
+				<span class="glyphicon glyphicon-user"></span>&nbsp;{!! Form::label('studentName', 'What is the title of your video?') !!}
+				{!! Form::text('title', "", ['class' =>'form-control']) !!}
+			</div>
+			
+			<div class="form-group">
+				<span class="glyphicon glyphicon-user"></span>&nbsp;{!! Form::label('studentName', 'Write a short description of what your video is about:') !!}
+				{!! Form::textarea('videoDescription', "", ['class' =>'form-control']) !!}
 			</div>
 			
 			<div class="form-group">
