@@ -53,6 +53,7 @@ class VideosController extends Controller
 			
 			switch($videoFile->getClientOriginalExtension()) {
 				case("mov"):
+				case("m4v"):
 				case("mp4"):
 						$destination = getcwd(). "/videos/";
 						
@@ -73,7 +74,7 @@ class VideosController extends Controller
 						
 						$video->save();
 						
-						return Redirect::to('video/show/' . $video->id)->with('message', 'Thank you for your video! <a class="alert-link" href=\'/\'></a>');
+						return Redirect::to('video/show/' . $video->id)->with('message', 'Thank you for your video!');
 				break;
 				default:
 					return Redirect::to('video/upload/')->with('error', 'The file type "' . $video->getClientOriginalExtension() . '" is not allowed');
