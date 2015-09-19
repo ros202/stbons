@@ -19,7 +19,8 @@
 			
 			<div class="form-group">
 				<span class="text-primary"><span class="glyphicon glyphicon-home"></span></span>&nbsp;{!! Form::label('houseName', 'Which house are you in?') !!}
-				{!! Form::text('houseName', "", ['class' =>'form-control']) !!}
+				<br>
+				{!! Form::select('houseName', array('St Andrew', 'St David', 'St George', 'St Patrick'), ['class' =>'form-control']) !!}
 			</div>
 			
 			<div class="form-group">
@@ -33,7 +34,7 @@
 			</div>
 			
 			<div class="form-group">
-				<span class="text-primary"><span class="glyphicon glyphicon-folder-open"></span></span>&nbsp;{!! Form::label('video', 'Find where you saved your video:') !!}
+				<span class="text-primary"><span class="glyphicon glyphicon-folder-open"></span></span>&nbsp;&nbsp;{!! Form::label('video', 'Find where you saved your video:') !!}
 				{!! Form::file('video') !!}
 			</div>
 			
