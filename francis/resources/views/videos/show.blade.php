@@ -14,7 +14,7 @@
 	 <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
 	</video>
 	
-	<h3>{{ $video->videoRating }} votes</h3>
+	<h3>{{ $video->videoRating }} {{ $video->voteSuffix }}</h3>
 	<h3 class="text-primary">&nbsp;If you really like this video, click the heart to give it your vote! &nbsp; <a href="/video/upvote/{{ $video->id}}" class="glyphicon glyphicon-heart"></a></h3>
 	<div id="videoRating">
 	

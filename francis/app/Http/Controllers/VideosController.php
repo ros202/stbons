@@ -58,6 +58,7 @@ class VideosController extends Controller
     {
         //
 		$video = Videos::where('id', '=', $id)->first();
+		$video->voteSuffix = ($video->videoRating != 1 ? "votes": "vote");
 		
 		return view('videos.show', compact('video'));
     }
