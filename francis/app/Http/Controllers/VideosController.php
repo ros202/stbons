@@ -45,7 +45,23 @@ class VideosController extends Controller
     public function store(Request $request)
     {
         //
-		dd(Request::file('video'));
+		if(Request::hasFile('video')) {
+			$video = Request::file('video');
+			$fileExt = $video->getExtension();
+			
+			switch($file->getExtension()) {
+				case(".mov") :
+				break;
+				case(".mp4") :
+				break;
+				default:
+					return Redirect::to('video/upload/')->with('error', 'The file type " . $file->getExtension() . " is not allowed');
+				break;
+			}
+			
+		} else {
+			return Redirect::to('video/upload/')->with('error', 'Please choose a video to upload');
+		}
     }
 
     /**
