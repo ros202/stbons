@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Request;
 use Session;
 use Illuminate\Support\Facades\Redirect;
 
@@ -45,7 +45,7 @@ class VideosController extends Controller
     public function store(Request $request)
     {
         //
-		dd($request);
+		dd(Request::file('video'));
     }
 
     /**
