@@ -72,6 +72,9 @@ class VideosController extends Controller
 						
 						$video->save();
 						
+						// Large files may be rejected if apache config is configured with a low limit:
+						// upload_max_filesize = 4096;
+						// post_max_size = 4096;
 						return Redirect::to('video/show/' . $video->id)->with('message', 'Thank you for your video!');
 				break;
 				default:
