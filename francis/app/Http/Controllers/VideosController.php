@@ -49,6 +49,8 @@ class VideosController extends Controller
 			$videoFile = Request::file('video');
 			$fileExt = $videoFile->getExtension();
 			
+			dd(Request::all());
+			
 			switch($videoFile->getClientOriginalExtension()) {
 				case("mov"):
 				case("mp4"):
@@ -61,11 +63,13 @@ class VideosController extends Controller
 						$videoFile->move($destination, $videoFile->getClientOriginalName());
 						
 						$video = New Videos();
-						$video->title = "";
 						$video->videoFile = "/videos/" . $videoFile->getClientOriginalName();
+						
+						$video->title = $request::input('title');
 						$video->studentName = $request::input('studentName');
-						$video->className = "Test Class";
-						$video->houseName = "Test House Name";
+						$video->className = $request::input('className');
+						$video->houseName = $request::input('houseName');
+						$video->videoDescription = $request::input('videoDescription');
 						
 						$video->save();
 						
