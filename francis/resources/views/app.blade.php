@@ -52,7 +52,11 @@
 </nav>
 
 @if(Session::has('message'))
-        <p class="alert alert-info">{{ Session::get('message') }}</p>
+        <h4><p class="alert alert-info">{{ Session::get('message') }}</p></h4>
+@endif
+
+@if(Session::has('error'))
+        <h4><p class="alert alert-danger">{!! Session::get('error') !!}</p></h4>
 @endif
 
 @yield('content')
