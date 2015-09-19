@@ -2,21 +2,49 @@
 
 @section('content')
 
-<div class="container-fluid">
+<div class="container">
 
-<h2> {{ $video->title }} </h2>
-<h3><i class="text-muted">{{ $video->studentName }}</i></h3>
-	<video id="example_video_1" class="video-js vjs-default-skin"
-	  controls preload="auto" width="1280" height="528"
-	  poster="http://video-js.zencoder.com/oceans-clip.png"
+	<video id="{{ $video->id }}" class="video-js vjs-default-skin vjs-big-play-centered"
+	  controls preload="auto" width="960" height="396"
+	  poster="{{ $video->videoThumbnail }}"
 	  data-setup='{"example_option":true}'>
 	 <source src="{{ $video->videoFile }}" type='video/mp4' />
 	 <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
 	</video>
 	
-	<h3>{{ $video->videoRating }} {{ $video->voteSuffix }}</h3>
-	<h3 class="text-primary">&nbsp;If you really like this video, click the heart to give it your vote! &nbsp; <a href="/video/upvote/{{ $video->id}}" class="glyphicon glyphicon-heart"></a></h3>
+	<!-- Stack the columns on mobile by making one full-width and the other half-width -->
+	<div class="row">
+		<div class="col-xs-12 col-md-9"><h3>{{ $video->title }} &nbsp; <i>{{ $video->studentName }}</i></h3></div>
+		<div class="col-xs-6 col-md-3"><h3 class="text-muted">{{ $video->houseName }}, {{ $video->className }}</h4></div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 col-md-12"><h4> {{ $video->videoDescription }} </h4></div>
+
+	<h3 id="rating">{{ $video->videoRating }} {{ $video->voteSuffix }}</h3>
+	<h4 class="text-primary">&nbsp;If you really like this video, click the heart to give it your vote! &nbsp; <a onclick="upvote();" class="glyphicon glyphicon-heart"></a></h4>
 	<div id="videoRating">
 	
 @endsection('content')
 </div>
+
+<script type="text/javascript">
+
+function upvote() {
+	var xmlhttp;
+	if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+	  xmlhttp = new XMLHttpRequest();
+	} else {// code for IE6, IE5
+	  xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	  
+	xmlhttp.onreadystatechange = function() {
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			document.getElementById("rating").innerHTML = xmlhttp.responseText;
+		}
+	}
+	
+	xmlhttp.open("GET","/video/upvote/{{ $video->id }}", true);
+	xmlhttp.send();
+}
+
+</script>

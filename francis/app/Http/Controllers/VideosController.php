@@ -23,6 +23,12 @@ class VideosController extends Controller
         //
 		$videos = Videos::get();
 		
+		foreach($videos as $video) {
+			if(!substr($video->videoThumbnail, 0, 4) == "http") {
+				$video->videoThumbnail = "http://" . $_SERVER['SERVER_NAME'] . ":" . $_SERVER['SERVER_PORT'] . "/" . $video->videoThumbnail;
+			}
+		}
+		
 		return view('videos.index', compact('videos'));
     }
 
@@ -48,8 +54,9 @@ class VideosController extends Controller
 		if(Request::hasFile('video')) {
 			$videoFile = Request::file('video');
 			$fileExt = $videoFile->getExtension();
-
-			switch($videoFile->getClientOriginalExtension()) {
+			$ext = strtolower($videoFile->getClientOriginalExtension());
+			
+			switch($ext) {
 				case("mov"):
 				case("m4v"):
 				case("mp4"):
@@ -78,7 +85,7 @@ class VideosController extends Controller
 						return Redirect::to('video/show/' . $video->id)->with('message', 'Thank you for your video!');
 				break;
 				default:
-					return Redirect::to('video/upload/')->with('error', 'The file type "' . $video->getClientOriginalExtension() . '" is not allowed');
+					return Redirect::to('video/upload/')->with('error', 'The file type "' . $videoFile->getClientOriginalExtension() . '" is not allowed');
 				break;
 			}
 			
@@ -101,6 +108,10 @@ class VideosController extends Controller
 		
 		if(!substr($video->videoFile, 0, 4) == "http") {
 			$video->videoFile = "http://" . $_SERVER['SERVER_NAME'] . ":" . $_SERVER['SERVER_PORT'] . "/" . $video->videoFile;
+		}
+		
+		if(!substr($video->videoThumbnail, 0, 4) == "http") {
+			$video->videoThumbnail = "http://" . $_SERVER['SERVER_NAME'] . ":" . $_SERVER['SERVER_PORT'] . "/" . $video->videoThumbnail;
 		}
 		
 		return view('videos.show', compact('video'));
@@ -146,7 +157,9 @@ class VideosController extends Controller
 			foreach(Session::get('user.votes') as $existingVote) {
 				if($existingVote == $id) {
 					// Video previously voted for
-					return Redirect::to('video/show/' . $id)->with('error', 'You have already voted for this video, <a class="alert-link" href=\'/\'>please watch another one!</a>');
+					$video = Videos::where('id', '=', $id)->first();
+					$video->voteSuffix = ($video->videoRating != 1 ? "votes": "vote");
+					return $video->videoRating . " " . $video->voteSuffix . " &ndash; You've already voted for this video!";
 				}
 			}
 		}
@@ -156,6 +169,7 @@ class VideosController extends Controller
 		Session::push('user.votes', $id);
 		
 		$video = Videos::where('id', '=', $id)->first();
-		return $video->videoRating;
+		$video->voteSuffix = ($video->videoRating != 1 ? "votes": "vote");
+		return $video->videoRating . " " . $video->voteSuffix;
 	}
 }

@@ -18,6 +18,8 @@
 <script src="//vjs.zencdn.net/4.12/video.js"></script>
 <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
 <script src="/js/jquery.dropdown.js"></script>
+<script src="/js/transition.js"></script>
+<script src="/js/collapse.js"></script>
 
 </head>
 
