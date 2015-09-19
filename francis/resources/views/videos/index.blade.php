@@ -8,7 +8,7 @@
   <h2>Hello, St Bon's!</h2>
   <p>These videos are all about science, and are all less than a minute long. Watch them, and if you find one you really like, you can click the heart button <i class="glyphicon glyphicon-heart"></i> to give it your vote! The video with the most votes will win an amazing prize! <i class="glyphicon glyphicon-gift"></i></p>
   <br>
-  <p>If you want to add your own science video here for everyone to vote on, click here:&nbsp; <a class="btn btn-primary" href="/upload" role="button">Add my video!</a></p>
+  <p>If you want to add your own science video here for everyone to watch and vote for, click here:&nbsp; <a class="btn btn-primary" href="/upload" role="button">Add my video!</a></p>
 </div>
 
 <div class="media">
