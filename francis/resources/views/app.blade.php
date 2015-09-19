@@ -32,7 +32,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand"  href="#">St Bonaventure's</a>
+      <a class="navbar-brand"  href="/">St Bonaventure's</a>
     </div>
 
     <!-- Nav links, forms, and other content for toggling -->
