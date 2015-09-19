@@ -93,6 +93,10 @@ class VideosController extends Controller
 		$video = Videos::where('id', '=', $id)->first();
 		$video->voteSuffix = ($video->videoRating != 1 ? "votes": "vote");
 		
+		if(!substr($video->videoFile, 0, 4) == "http") {
+			$video->videoFile = "http://" . $_SERVER['SERVER_NAME'] . ":" . $_SERVER['SERVER_PORT'] . "/" . $video->videoFile;
+		}
+		
 		return view('videos.show', compact('video'));
     }
 
