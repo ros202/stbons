@@ -34,7 +34,7 @@
 			</div>
 			
 			<div class="form-group">
-				<span class="text-primary"><span class="glyphicon glyphicon-folder-open"></span></span>&nbsp;{!! Form::label('video', 'Find where you saved your video:') !!}
+				<span class="text-primary"><span class="glyphicon glyphicon-folder-open"></span></span>&nbsp;&nbsp;{!! Form::label('video', 'Find where you saved your video:') !!}
 				{!! Form::file('video') !!}
 			</div>
 			
