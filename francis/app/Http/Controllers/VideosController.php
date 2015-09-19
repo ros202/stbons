@@ -103,7 +103,7 @@ class VideosController extends Controller
 		}
 		
 		// Video not previously voted for
-		Videos::where('id', '=', $id)->increment('upvotes');
+		Videos::where('id', '=', $id)->increment('videoRating');
 		Session::push('user.votes', $id);
 		
 		return Redirect::to('video/show/' . $id)->with('message', 'Thanks for your vote!');
