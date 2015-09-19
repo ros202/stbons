@@ -39,7 +39,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-left">
 		<li><a href="/"><i class="glyphicon glyphicon-home"></i>&nbsp;&nbsp; Home</a></li>
-        <li><a href="#"><i class="glyphicon glyphicon-film"></i>&nbsp;&nbsp; Add your own video!</a></li>
+        <li><a href="/video/upload"><i class="glyphicon glyphicon-film"></i>&nbsp;&nbsp; Add your own video!</a></li>
       </ul>
 	  <form class="navbar-form navbar-right" role="search">
         <div class="form-group">

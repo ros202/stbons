@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="container-fluid">
+<div class="container">
 
 <form>
   <div class="form-group">
@@ -35,15 +35,15 @@
   <div class="form-group">
     <label for="title">What is the title for your video?</label>
     <input type="text" class="form-control" id="title">
+	  <label for="videoDescription">Write a short description of what you video is about.</label>
+	  <textarea class="form-control" id="videoDescription" rows="3"></textarea>
+	  <div class="form-group">
+		<label for="inputVideo">Add your video:</label>
+		<input type="file" id="inputVideo">
+		<p class="help-block">Find where your video is saved.</p>
+	  </div>
+	  <button type="submit" class="btn btn-default">Submit</button>
   </div>
-  <label for="videoDescription">Write a short description of what you video is about.</label>
-  <textarea class="form-control" id="videoDescription" rows="3"></textarea>
-  <div class="form-group">
-    <label for="inputVideo">Add your video:</label>
-    <input type="file" id="inputVideo">
-    <p class="help-block">Find where your video is saved.</p>
-  </div>
-  <button type="submit" class="btn btn-default">Submit</button>
 </form>
 	
 @endsection('content')

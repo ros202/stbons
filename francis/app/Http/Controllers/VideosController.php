@@ -31,7 +31,7 @@ class VideosController extends Controller
      */
     public function create()
     {
-        //
+		return view('videos.upload');
     }
 
     /**

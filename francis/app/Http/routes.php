@@ -15,3 +15,5 @@ Route::get('/', 'VideosController@index');
 Route::get('/videos', 'VideosController@index');
 Route::get('/video/show/{id}', 'VideosController@show');
 Route::get('/video/upvote/{id}', 'VideosController@upvote');
+Route::get('/video/upload', 'VideosController@create');
+Route::post('/video/upload', 'VideosController@store');
