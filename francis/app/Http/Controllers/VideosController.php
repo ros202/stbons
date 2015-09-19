@@ -48,9 +48,7 @@ class VideosController extends Controller
 		if(Request::hasFile('video')) {
 			$videoFile = Request::file('video');
 			$fileExt = $videoFile->getExtension();
-			
-			dd(Request::all());
-			
+
 			switch($videoFile->getClientOriginalExtension()) {
 				case("mov"):
 				case("m4v"):
