@@ -46,16 +46,33 @@ class VideosController extends Controller
     {
         //
 		if(Request::hasFile('video')) {
-			$video = Request::file('video');
-			$fileExt = $video->getExtension();
+			$videoFile = Request::file('video');
+			$fileExt = $videoFile->getExtension();
 			
-			switch($file->getExtension()) {
-				case(".mov") :
-				break;
-				case(".mp4") :
+			switch($videoFile->getClientOriginalExtension()) {
+				case("mov"):
+				case("mp4"):
+						$destination = getcwd(). "/videos/";
+						
+						if(!is_dir($destination)) {
+							mkdir($destination);
+						}
+						
+						$videoFile->move($destination, $videoFile->getClientOriginalName());
+						
+						$video = New Videos();
+						$video->title = "";
+						$video->videoFile = "/videos/" . $videoFile->getClientOriginalName();
+						$video->studentName = $request::input('studentName');
+						$video->className = "Test Class";
+						$video->houseName = "Test House Name";
+						
+						$video->save();
+						
+						return Redirect::to('video/show/' . $video->id)->with('message', 'Thank you for your video! <a class="alert-link" href=\'/\'></a>');
 				break;
 				default:
-					return Redirect::to('video/upload/')->with('error', 'The file type " . $file->getExtension() . " is not allowed');
+					return Redirect::to('video/upload/')->with('error', 'The file type "' . $video->getClientOriginalExtension() . '" is not allowed');
 				break;
 			}
 			
