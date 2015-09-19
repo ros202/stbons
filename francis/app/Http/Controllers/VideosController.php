@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Session;
+use Illuminate\Support\Facades\Redirect;
 
 use App\Videos;
 
@@ -95,10 +97,12 @@ class VideosController extends Controller
 	
 	// Upvote video
 	public function upvote($id) {
-		foreach(Session::get('user.votes') as $existingVote) {
-			if($existingVote == $id) {
-				// Video previously voted for
-				return Redirect::to('video/show/' . $id)->with('message', 'You have already voted for this video, please choose another!');
+		if(null !== Session::get('user.votes')) {
+			foreach(Session::get('user.votes') as $existingVote) {
+				if($existingVote == $id) {
+					// Video previously voted for
+					return Redirect::to('video/show/' . $id)->with('message', 'You have already voted for this video, please choose another!');
+				}
 			}
 		}
 		
