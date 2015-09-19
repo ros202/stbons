@@ -92,4 +92,20 @@ class VideosController extends Controller
     {
         //
     }
+	
+	// Upvote video
+	public function upvote($id) {
+		foreach(Session::get('user.votes') as $existingVote) {
+			if($existingVote == $id) {
+				// Video previously voted for
+				return Redirect::to('video/show/' . $id)->with('message', 'You have already voted for this video, please choose another!');
+			}
+		}
+		
+		// Video not previously voted for
+		Videos::where('id', '=', $id)->increment('upvotes');
+		Session::push('user.votes', $id);
+		
+		return Redirect::to('video/show/' . $id)->with('message', 'Thanks for your vote!');
+	}
 }

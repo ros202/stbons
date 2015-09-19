@@ -16,5 +16,6 @@
 	
 	<h3 class="text-primary"><i class="glyphicon glyphicon-heart"></i>&nbsp;If you really like this video, click the heart to give it your vote!</h3>
 
+<!-- DT - Check the below before committing -->
 @endsection('content')
 </div>

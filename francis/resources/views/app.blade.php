@@ -51,6 +51,10 @@
   </div><!-- /.container-fluid -->
 </nav>
 
+@if(Session::has('message'))
+        <p class="alert alert-info">{{ Session::get('message') }}</p>
+@endif
+
 @yield('content')
 
 <div id="copyright text-right"><p class="text-muted">&nbsp;&nbsp;© Copyright 2015 Ross Harrison</p></div>
