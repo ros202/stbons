@@ -58,6 +58,7 @@ class VideosController extends Controller
     {
         //
 		$video = Videos::where('id', '=', $id)->first();
+		$video->voteSuffix = ($video->videoRating != 1 ? "votes": "vote");
 		
 		return view('videos.show', compact('video'));
     }
@@ -102,7 +103,7 @@ class VideosController extends Controller
 			foreach(Session::get('user.votes') as $existingVote) {
 				if($existingVote == $id) {
 					// Video previously voted for
-					return Redirect::to('video/show/' . $id)->with('error', 'You have already voted for this video, <a href=\'/\'>please watch another one!</a>');
+					return Redirect::to('video/show/' . $id)->with('error', 'You have already voted for this video, <a class="alert-link" href=\'/\'>please watch another one!</a>');
 				}
 			}
 		}
@@ -111,6 +112,6 @@ class VideosController extends Controller
 		Videos::where('id', '=', $id)->increment('videoRating');
 		Session::push('user.votes', $id);
 		
-		return Redirect::to('video/show/' . $id)->with('message', 'Thank you for your vote!');
+		return Redirect::to('video/show/' . $id)->with('message', 'Thank you for your vote! <a class="alert-link" href=\'/\'>Now watch some more videos!</a>');
 	}
 }
