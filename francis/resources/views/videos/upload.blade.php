@@ -19,7 +19,8 @@
 			
 			<div class="form-group">
 				<span class="text-primary"><span class="glyphicon glyphicon-home"></span></span>&nbsp;{!! Form::label('houseName', 'Which house are you in?') !!}
-				{!! Form::text('houseName', "", ['class' =>'form-control']) !!}
+				<br>
+				{!! Form::select('houseName', array('St Andrew', 'St David', 'St George', 'St Patrick'), ['class' =>'form-control']) !!}
 			</div>
 			
 			<div class="form-group">
