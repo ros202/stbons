@@ -14,13 +14,13 @@
 			<div class="form-group">
 				<span class="text-primary"><span class="glyphicon glyphicon-education"></span></span>&nbsp;{!! Form::label('className', 'Which class are you in?') !!}
 				<br>
-				{!! Form::select('className', array('RH' => 'RH', 'RM', '1H', '1MS', '2T', '2WR', '3J', '3T', '4C', '4SA', '5K', '5P', '6D', '6GW'), ['class' =>'form-control']) !!}
+				{!! Form::select('className', array('RH' => 'RH', 'RM' => 'RM', '1H' => '1H', '1MS' => '1MS', '2T' => '2T', '2WR' => '2WR', '3J' => '3J', '3T' => '3T', '4C' => '4C', '4SA' => '4SA', '5K' => '5K', '5P' => '5P', '6D' => '6D', '6GW' => '6GW'), ['class' =>'form-control']) !!}
 			</div>
 			
 			<div class="form-group">
 				<span class="text-primary"><span class="glyphicon glyphicon-home"></span></span>&nbsp;{!! Form::label('houseName', 'Which house are you in?') !!}
 				<br>
-				{!! Form::select('houseName', array('St Andrew', 'St David', 'St George', 'St Patrick'), ['class' =>'form-control']) !!}
+				{!! Form::select('houseName', array('St Andrew' => 'St Andrew', 'St David' => 'St David', 'St George' => 'St George', 'St Patrick' => 'St Patrick'), ['class' =>'form-control']) !!}
 			</div>
 			
 			<div class="form-group">
