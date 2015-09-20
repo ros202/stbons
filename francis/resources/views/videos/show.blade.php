@@ -7,16 +7,6 @@
 		<iframe class="embed-responsive-item" src="{{ $video->videoFile }}"></iframe>
 	</div>
 
-<!--	<video id="{{ $video->id }}" class="video-js vjs-default-skin vjs-big-play-centered"
-	  controls preload="auto" width="960" height="396"
-	  poster="{{ $video->videoThumbnail }}"
-	  data-setup='{"example_option":true}'>
-	 <source src="{{ $video->videoFile }}" type='video/mp4' />
-	 <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
-	</video>
-	
--->
-	
 	<div class="panel panel-primary">
 		<div class="panel-heading">
 			<div class="row">
