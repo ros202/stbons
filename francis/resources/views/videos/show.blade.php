@@ -15,19 +15,15 @@
 	<div class="panel panel-primary">
 		<div class="panel-heading">
 			<div class="row">
-				<div class="col-xs-12 col-md-9"><h3 class="bg-primary" style="margin-top: 0px;">{{ $video->title }} &nbsp; <i>{{ $video->studentName }}</i></h3></div>
-				<div class="col-xs-6 col-md-3"><h3>{{ $video->houseName }}, {{ $video->className }}</h3></div>
+				<div class="col-xs-12 col-md-4 text-left"><h3 class="bg-primary">{{ $video->studentName }}, {{ $video->className }}</h3></div>
+				<div class="col-xs-6 col-md-4 text-center"><h3 class="bg-primary"><i>{{ $video->title }}</i></h3></div>
+				<div class="col-xs-6 col-md-4 text-right"><h3 class="bg-primary" id="rating">{{ $video->videoRating }}&nbsp;{{ $video->voteSuffix }}</h3></div>
 			</div>
 		</div>
-		<div class="panel-body">
-			<div class="row">
-				<div class="col-xs-12 col-md-12"><h4> {{ $video->videoDescription }} </h4>
-			</div>
-		</div>
-	
-	<h3 id="rating">{{ $video->videoRating }} {{ $video->voteSuffix }}</h3>
-	<h4 class="text-primary">&nbsp;If you really like this video, click the heart to give it your vote! &nbsp; <a onclick="upvote();" class="glyphicon glyphicon-heart"></a></h4>
-	<div id="videoRating">
+		<div class="panel-body">{{ $video->videoDescription }}</div>
+			<ul class="list-group">
+				<li class="list-group-item text-center"><h4 class="text-primary">&nbsp;If you really like this video, click the heart to give it your vote! &nbsp; <a onclick="upvote();" class="glyphicon glyphicon-heart"></a></h4><div id="videoRating"></li>
+		</ul>
 </div>
 @endsection('content')
 </div>
