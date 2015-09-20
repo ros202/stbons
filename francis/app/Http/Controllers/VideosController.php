@@ -21,8 +21,7 @@ class VideosController extends Controller
     public function index()
     {
         //
-		$videos = Videos::get();
-		
+		$videos = Videos::orderBy('videoRating', 'DESC')->get();
 		foreach($videos as $video) {
 			if(!substr($video->videoThumbnail, 0, 4) == "http") {
 				$video->videoThumbnail = "http://" . $_SERVER['SERVER_NAME'] . ":" . $_SERVER['SERVER_PORT'] . "/" . $video->videoThumbnail;

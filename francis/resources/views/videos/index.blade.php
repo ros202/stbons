@@ -26,6 +26,7 @@
 		<h2 class= "text-primary" "media-heading"> <a href="/video/show/{{ $video->id }}">{{ $video->title }}</a></h2>
 		<h4>A video by {{ $video->studentName }} from Class {{ $video->className }}!</h4>
 		<p><h5 class="text-muted"><i>{{ $video->videoDescription }}</i></h5></p>
+		<p><h4>{{ $video->videoRating }}&nbsp;<span class="text-primary"><i class="glyphicon glyphicon-heart"></i></span></h4></p>
 	  </div>
 	  <p><br></p>
 	</div>
