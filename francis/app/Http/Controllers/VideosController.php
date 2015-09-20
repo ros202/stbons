@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Request;
 use Session;
+use FFMpeg;
 use Illuminate\Support\Facades\Redirect;
 
 use App\Videos;
@@ -53,7 +54,7 @@ class VideosController extends Controller
 				case("mov"):
 				case("m4v"):
 				case("mp4"):
-						$destination = getcwd(). "/videos/";
+						$destination = getcwd() . "/videos/";
 						
 						if(!is_dir($destination)) {
 							mkdir($destination);
@@ -63,7 +64,16 @@ class VideosController extends Controller
 						
 						$video = New Videos();
 						$video->videoFile = "/videos/" . $videoFile->getClientOriginalName();
-						
+											
+						$ffmpeg = FFMpeg\FFMpeg::create([
+							'ffmpeg.binaries'  => getcwd(). '/ffmpeg',
+							'ffprobe.binaries' => getcwd(). '/ffprobe'
+						]);
+												
+						$videoObject = $ffmpeg->open($destination . "/" . $videoFile->getClientOriginalName());
+						dd($videoObject);
+						$video->frame(FFMpeg\Coordinate\TimeCode::fromSeconds(10))->save($destination . '/frame.jpg');
+	
 						$video->title = $request::input('title');
 						$video->studentName = $request::input('studentName');
 						$video->className = $request::input('className');
