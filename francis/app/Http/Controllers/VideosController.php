@@ -159,7 +159,7 @@ class VideosController extends Controller
 					// Video previously voted for
 					$video = Videos::where('id', '=', $id)->first();
 					$video->voteSuffix = ($video->videoRating != 1 ? "votes": "vote");
-					return $video->videoRating . " " . $video->voteSuffix . " &ndash; You've already voted for this video!";
+					return $video->videoRating . " " . $video->voteSuffix . " &ndash; You've already voted!";
 				}
 			}
 		}
