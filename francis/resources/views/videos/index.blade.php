@@ -19,7 +19,7 @@
 	<div class="container">
 	  <div class="media-left media-middle">
 		<a href="/video/show/{{ $video->id }}">
-		  <img class="media-object" src="/assets/{{ $video->videoThumbnail }}" alt="{{ $video->studentName }}">
+		  <img class="media-object" src="/assets/{{ $video->videoThumbnail }}" width=180px alt="{{ $video->studentName }}" onerror="this.onerror=null;this.src='videoplaceholder.png'">
 		</a>
 	  </div>
 	  <div class="media-body">
