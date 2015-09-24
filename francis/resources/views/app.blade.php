@@ -50,6 +50,7 @@
           <input type="text" class="form-control" placeholder="Find someone's video!">
         </div>
         <button type="submit" class="btn btn-default">Search</button>
+		<a href="/auth/logout">Logout</a>
       </form>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
