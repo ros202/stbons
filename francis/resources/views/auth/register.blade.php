@@ -51,12 +51,12 @@ body {
 	{!! csrf_field() !!}
 	<h3 class="form-signin-heading">Register as a new user</h3>
 	<label for="inputName" class="sr-only">Name</label>
-	<input type="topof2" id="inputName" class="form-control" name="name" value="{{ old('name') }}" placeholder="Username" required autofocus>
+	<input type="topof2" id="name" class="form-control" name="name" value="{{ old('name') }}" placeholder="Username" required autofocus>
 	<input type="bottomof2" id="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Email" required>
 	<label for="inputPassword" class="sr-only">Password</label>
-	<input type="topof2" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
+	<input type="topof2" id="password" name="password" class="form-control" placeholder="Password" required>
 	<label for="confirmPassword" class="sr-only">Confirm password</label>
-	<input type="bottomof2" id="passwordConfirmation" name="password_confirmation" class="form-control" placeholder="Re-enter password" required>
+	<input type="bottomof2" id="password_confirmation" name="password_confirmation" class="form-control" placeholder="Re-enter password" required>
 	<button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
   </form>
 
