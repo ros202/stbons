@@ -29,7 +29,7 @@
 			</div>
 			
 			<div class="form-group">
-				<span class="text-primary"><span class="glyphicon glyphicon-pencil"></span></span>&nbsp;{!! Form::label('studentName', 'Write a short description of what your video is about:') !!}
+				<span class="text-primary"><span class="glyphicon glyphicon-pencil"></span></span>&nbsp;{!! Form::label('studentName', 'For your video: What is the big question? What part of the big question are you looking at?') !!}
 				{!! Form::textarea('videoDescription', "", ['class' =>'form-control']) !!}
 			</div>
 			
