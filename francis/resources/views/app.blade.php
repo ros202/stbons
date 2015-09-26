@@ -62,7 +62,5 @@
 
 @yield('content')
 
-<div id="copyright text-right"><p class="text-muted">&nbsp;&nbsp;© Copyright 2015 Ross Harrison</p></div>
-
 </body>
 </html>
