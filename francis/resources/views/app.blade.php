@@ -45,12 +45,8 @@
 		<li><a href="/"><i class="glyphicon glyphicon-home"></i>&nbsp;&nbsp; Home</a></li>
         <li><a href="/video/upload"><i class="glyphicon glyphicon-film"></i>&nbsp;&nbsp; Add your own video!</a></li>
       </ul>
-	  <form class="navbar-form navbar-right" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Find someone's video!">
-        </div>
-        <button type="submit" class="btn btn-default">Search</button>
-		<a href="/auth/logout">Logout</a>
+	  <form class="navbar-form navbar-right" role="logout">
+        <button type="logout" class="btn btn-default" href="/auth/logout">Logout</button>
       </form>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
