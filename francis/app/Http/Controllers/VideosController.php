@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Redirect;
 
 use App\Videos;
 
+use Aws\S3\S3Client;
+use Aws\Common\Credentials\Credentials;
+
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -58,17 +61,9 @@ class VideosController extends Controller
 			switch($ext) {
 				case("mov"):
 				case("m4v"):
-				case("mp4"):
-						$destination = getcwd(). "/videos/";
-						
-						if(!is_dir($destination)) {
-							mkdir($destination);
-						}
-						
-						$videoFile->move($destination, $videoFile->getClientOriginalName());
-						
+				case("mp4"):						
 						$video = New Videos();
-						$video->videoFile = "/videos/" . $videoFile->getClientOriginalName();
+						$video->videoFile = VideosController::saveFileToS3($videoFile);
 						
 						$video->title = $request::input('title');
 						$video->studentName = $request::input('studentName');
@@ -170,5 +165,34 @@ class VideosController extends Controller
 		$video = Videos::where('id', '=', $id)->first();
 		$video->voteSuffix = ($video->videoRating != 1 ? "votes": "vote");
 		return $video->videoRating . " " . $video->voteSuffix;
+	}
+	
+	public function getUploadProgress() {
+		$s = $_SESSION['upload_progress_'.intval($_GET['PHP_SESSION_UPLOAD_PROGRESS'])];
+		$progress = array(
+			'lengthComputable' => true,
+			'loaded' => $s['bytes_processed'],
+			'total' => $s['content_length']
+		);
+		echo json_encode($progress);
+	}
+	
+	function saveFileToS3($file) {
+			$s3Client = S3Client::factory(array(
+				'version' => 'latest',
+				'region' => 'eu-west-1',
+				'key'    => 'AKIAJS5IWE3FXYW6GVAQ',
+				'secret' => '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'
+			));
+
+			$result = $s3Client->putObject(array(
+				'ACL' => 'public-read',
+				'Bucket' => 'stbons',
+				'Key' => $file->getClientOriginalName(),
+				'Body' => fopen($file->getRealPath(), 'r'),
+				'ContentType' => $file->getMimeType()
+			));
+
+		return "https://s3-eu-west-1.amazonaws.com/stbons/" .  urlencode($file->getClientOriginalName());
 	}
 }
