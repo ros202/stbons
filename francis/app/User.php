@@ -20,9 +20,7 @@ class User extends Model implements AuthenticatableContract,
      * The database table used by the model.
      *
      * @var string
-     */
-	protected $connection = 'users';
-	 
+     */	 
     protected $table = 'users';
 
     /**
