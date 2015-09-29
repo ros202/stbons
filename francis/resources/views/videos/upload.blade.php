@@ -2,6 +2,14 @@
 
 @section('content')
 
+<style>
+.form-group {
+  max-width: 750px;
+  padding: 15px;
+  margin: 0 auto;
+}
+</style>
+
 <div class="container">
 
 {!! Form::open(array('url' => '/video/upload', 'files' => true)) !!}
