@@ -32,11 +32,11 @@ body {
 .form-signin .form-control:focus {
   z-index: 2;
 }
-.form-signin input[type="topof2"] {
+.form-signin input[type="username"] {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
-.form-signin input[type="bottomof2"] {
+.form-signin input[type="password"] {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
@@ -51,9 +51,9 @@ body {
 	
 	<h2 class="form-signin-heading">Please sign in</h2>
 	<label for="inputUsername" class="sr-only">Username</label>
-		<input type="topof2" id="email" name="email" class="form-control" placeholder="Username" required autofocus>
+		<input type="username" id="email" name="email" class="form-control" placeholder="Username" required autofocus>
 	<label for="inputPassword" class="sr-only">Password</label>
-		<input type="bottomof2" id="password" name="password" class="form-control" placeholder="Password"  type="password" required>
+		<input type="password" id="password" name="password" class="form-control" placeholder="Password"  type="password" required>
 	<div class="checkbox">
 	  <label>
 		<input type="checkbox" value="remember"> Remember me
