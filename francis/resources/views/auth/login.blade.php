@@ -47,12 +47,13 @@ body {
 <div class="container">
 
   <form class="form-signin" method="POST" action="/auth/login">
-	{!! csrf_field() !!}
+	<input type="hidden" name="_token" value="{{ csrf_token() }}">
+	
 	<h2 class="form-signin-heading">Please sign in</h2>
 	<label for="inputUsername" class="sr-only">Username</label>
-	<input type="topof2" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
+		<input type="topof2" id="email" name="email" class="form-control" placeholder="Username" required autofocus>
 	<label for="inputPassword" class="sr-only">Password</label>
-	<input type="bottomof2" id="inputPassword" class="form-control" placeholder="Password" required>
+		<input type="bottomof2" id="password" name="password" class="form-control" placeholder="Password"  type="password" required>
 	<div class="checkbox">
 	  <label>
 		<input type="checkbox" value="remember"> Remember me

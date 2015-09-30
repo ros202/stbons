@@ -181,8 +181,8 @@ class VideosController extends Controller
 			$s3Client = S3Client::factory(array(
 				'version' => 'latest',
 				'region' => 'eu-west-1',
-				'key'    => 'AKIAJS5IWE3FXYW6GVAQ',
-				'secret' => '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'
+				'key'    => getenv('AWS_KEY'),
+				'secret' => getenv('AWS_SECRET')
 			));
 
 			$result = $s3Client->putObject(array(
