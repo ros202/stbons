@@ -14,11 +14,8 @@
         "phpunit/phpunit": "~4.0",
         "phpspec/phpspec": "~2.1",
         "laravelcollective/html": "~5.0",
-<<<<<<< HEAD
-		"aws/aws-sdk-php": "~2.6"
-=======
-	"php-ffmpeg/php-ffmpeg": "~0.5"
->>>>>>> devel/authentication
+		"aws/aws-sdk-php": "~2.6",
+	   "php-ffmpeg/php-ffmpeg": "~0.5"
     },
     "autoload": {
         "classmap": [
