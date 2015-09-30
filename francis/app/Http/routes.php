@@ -16,6 +16,10 @@ Route::controllers([
 	'password' => 'Auth\PasswordController',
 ]);
 
+Route::get('/home', function() {
+	return Redirect::to('/');
+});
+
 // Application routes...
 Route::get('/', ['middleware' => 'auth', 'uses' => 'VideosController@index']);
 Route::get('/videos', ['middleware' => 'auth', 'uses' => 'VideosController@index']);

@@ -40,14 +40,17 @@
     </div>
 
     <!-- Nav links, forms, and other content for toggling -->
+	@if(!Auth::guest())
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-left">
 		<li><a href="/"><i class="glyphicon glyphicon-home"></i>&nbsp;&nbsp; Home</a></li>
         <li><a href="/video/upload"><i class="glyphicon glyphicon-film"></i>&nbsp;&nbsp; Add your own video!</a></li>
       </ul>
-	  <form class="navbar-form navbar-right" role="logout">
-        <button type="logout" class="btn btn-default" href="/auth/logout">Logout</button>
+
+	  <form method="GET" action="/auth/logout" class="navbar-form navbar-right" role="logout">
+        <button type="submit" class="btn btn-default">Logout</button>
       </form>
+	  @endif
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
