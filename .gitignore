@@ -2,3 +2,4 @@
 *.lock
 
 francis/composer.lock
+*.sqlite
