@@ -64,6 +64,7 @@ class VideosController extends Controller
 				case("mp4"):						
 						$video = New Videos();
 						$video->videoFile = VideosController::saveFileToS3($videoFile);
+						$video->videoThumbnail = VideosController::createThumbnail($videoFile);
 						
 						$video->title = $request::input('title');
 						$video->studentName = $request::input('studentName');
@@ -194,5 +195,25 @@ class VideosController extends Controller
 			));
 
 		return "https://s3-eu-west-1.amazonaws.com/stbons/" .  urlencode($file->getClientOriginalName());
+	}
+	
+	function createThumbnail($file) {
+		shell_exec('`which ffmpegthumbnailer` -s 1024 -i ' . $file->getRealPath() . ' -o /tmp/' . $file->getClientOriginalName() . '.jpeg');
+		
+		$s3Client = S3Client::factory(array(
+				'version' => 'latest',
+				'region' => 'eu-west-1',
+				'key'    => getenv('AWS_KEY'),
+				'secret' => getenv('AWS_SECRET')
+			));
+
+			$result = $s3Client->putObject(array(
+				'ACL' => 'public-read',
+				'Bucket' => 'stbons',
+				'Key' => $file->getClientOriginalName() '.jpeg',
+				'Body' => fopen('/tmp/' . $file->getClientOriginalName() . '.jpeg', 'r'),
+				'ContentType' => 'image/jpeg'
+			));
+		return $file->getClientOriginalName() '.jpeg';
 	}
 }
