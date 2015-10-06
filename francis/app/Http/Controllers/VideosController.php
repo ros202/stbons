@@ -200,7 +200,7 @@ class VideosController extends Controller
 	function createThumbnail($file) {
 		$guid = uniqid();
 		$return = array();
-		$return[0] = '`which ffmpegthumbnailer` -s 1024 -i ' . $file->getRealPath() . ' -o /tmp/' . $guid  . '.jpeg';
+		$return[0] = '`which ffmpegthumbnailer` -s 1024 -i ' . $file->getRealPath() . ' -o ' . getcwd() . '/' . $guid  . '.jpeg';
 		$return[1] = shell_exec($return[0]);
 		
 		dd($return);
@@ -216,7 +216,7 @@ class VideosController extends Controller
 				'ACL' => 'public-read',
 				'Bucket' => 'stbons',
 				'Key' => $file->getClientOriginalName() . '.jpeg',
-				'Body' => fopen('/tmp/' . $file->getClientOriginalName() . '.jpeg', 'r'),
+				'Body' => fopen(getcwd() . '/' . $guid  . '.jpeg', 'r'),
 				'ContentType' => 'image/jpeg'
 			));
 		return $guid . '.jpeg';
