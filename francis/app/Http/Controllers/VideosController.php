@@ -218,6 +218,10 @@ class VideosController extends Controller
 				'Body' => fopen(getcwd() . '/' . $guid  . '.jpeg', 'r'),
 				'ContentType' => 'image/jpeg'
 			));
+			
+		unlink(getcwd() . '/' . $guid  . '.jpeg');
+		unlink('/tmp/' . $file->getClientOriginalName());
+	
 		return $guid . '.jpeg';
 	}
 }
