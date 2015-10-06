@@ -204,6 +204,8 @@ class VideosController extends Controller
 		$return[0] = '`which ffmpegthumbnailer` -s 1024 -i /tmp/' . $file->getClientOriginalName() . ' -o ' . getcwd() . '/assets/' . $guid  . '.jpeg';
 		$return[1] = shell_exec($return[0]);
 
+		dd($return);
+
 		sleep(5);
 		//unlink('/tmp/' . $file->getClientOriginalName());
 	
