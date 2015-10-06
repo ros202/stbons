@@ -198,7 +198,11 @@ class VideosController extends Controller
 	}
 	
 	function createThumbnail($file) {
-		shell_exec('`which ffmpegthumbnailer` -s 1024 -i ' . $file->getRealPath() . ' -o /tmp/' . $file->getClientOriginalName() . '.jpeg');
+		$return = array();
+		$return[0] = '`which ffmpegthumbnailer` -s 1024 -i ' . $file->getRealPath() . ' -o /tmp/' . $file->getClientOriginalName() . '.jpeg';
+		$return[1] = shell_exec('`which ffmpegthumbnailer` -s 1024 -i ' . $file->getRealPath() . ' -o /tmp/' . $file->getClientOriginalName() . '.jpeg');
+		
+		dd($return);
 		
 		$s3Client = S3Client::factory(array(
 				'version' => 'latest',
