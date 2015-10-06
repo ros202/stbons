@@ -199,8 +199,8 @@ class VideosController extends Controller
 	
 	function createThumbnail($file) {
 		$return = array();
-		$return[0] = '`which ffmpegthumbnailer` -s 1024 -i ' . $file->getRealPath() . ' -o /tmp/' . $file->getClientOriginalName() . '.jpeg';
-		$return[1] = shell_exec('`which ffmpegthumbnailer` -s 1024 -i ' . $file->getRealPath() . ' -o /tmp/' . $file->getClientOriginalName() . '.jpeg');
+		$return[0] = '`which ffmpegthumbnailer` -s 1024 -i ' . $file->getRealPath() . ' -o /tmp/' . escapeshellarg($file->getClientOriginalName()) . '.jpeg';
+		$return[1] = shell_exec($return[0]);
 		
 		dd($return);
 		
