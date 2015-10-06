@@ -199,8 +199,9 @@ class VideosController extends Controller
 	
 	function createThumbnail($file) {
 		$guid = uniqid();
+		$file->move(getcwd(), $file->getClientOriginalName());
 		$return = array();
-		$return[0] = '`which ffmpegthumbnailer` -s 1024 -i ' . $file->getClientOriginalName() . ' -o ' . getcwd() . '/' . $guid  . '.jpeg';
+		$return[0] = '`which ffmpegthumbnailer` -s 1024 -i ' . getcwd() . '/' . $file->getClientOriginalName() . ' -o ' . getcwd() . '/' . $guid  . '.jpeg';
 		$return[1] = shell_exec($return[0]);
 		
 		dd($return);
