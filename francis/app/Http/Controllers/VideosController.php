@@ -203,9 +203,7 @@ class VideosController extends Controller
 		$return = array();
 		$return[0] = '`which ffmpegthumbnailer` -s 1024 -i /tmp/' . $file->getClientOriginalName() . ' -o ' . getcwd() . '/' . $guid  . '.jpeg';
 		$return[1] = shell_exec($return[0]);
-		
-		dd($return);
-		
+				
 		$s3Client = S3Client::factory(array(
 				'version' => 'latest',
 				'region' => 'eu-west-1',
