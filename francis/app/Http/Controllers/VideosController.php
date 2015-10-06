@@ -201,27 +201,12 @@ class VideosController extends Controller
 		$guid = uniqid();
 		$file->move('/tmp', $file->getClientOriginalName());
 		$return = array();
-		$return[0] = '`which ffmpegthumbnailer` -s 1024 -i /tmp/' . $file->getClientOriginalName() . ' -o ' . getcwd() . '/' . $guid  . '.jpeg';
-		$return[1] = exec($return[0]);
-				
-		$s3Client = S3Client::factory(array(
-				'version' => 'latest',
-				'region' => 'eu-west-1',
-				'key'    => getenv('AWS_KEY'),
-				'secret' => getenv('AWS_SECRET')
-			));
+		$return[0] = '`which ffmpegthumbnailer` -s 1024 -i /tmp/' . $file->getClientOriginalName() . ' -o ' . getcwd() . '/assets/' . $guid  . '.jpeg';
+		$return[1] = shell_exec($return[0]);
 
-			$result = $s3Client->putObject(array(
-				'ACL' => 'public-read',
-				'Bucket' => 'stbons',
-				'Key' => $file->getClientOriginalName() . '.jpeg',
-				'Body' => fopen(getcwd() . '/' . $guid  . '.jpeg', 'r'),
-				'ContentType' => 'image/jpeg'
-			));
-			
 		unlink(getcwd() . '/' . $guid  . '.jpeg');
 		unlink('/tmp/' . $file->getClientOriginalName());
 	
-		return $guid . '.jpeg';
+		return 'assets/' . $guid  . '.jpeg';
 	}
 }
