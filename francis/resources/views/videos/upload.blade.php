@@ -26,12 +26,6 @@
 			</div>
 			
 			<div class="form-group">
-				<span class="text-primary"><span class="glyphicon glyphicon-home"></span></span>&nbsp;{!! Form::label('houseName', 'Which house are you in?') !!}
-				<br>
-				{!! Form::select('houseName', array('St Andrew' => 'St Andrew', 'St David' => 'St David', 'St George' => 'St George', 'St Patrick' => 'St Patrick'), ['class' =>'form-control']) !!}
-			</div>
-			
-			<div class="form-group">
 				<span class="text-primary"><span class="glyphicon glyphicon-film"></span></span>&nbsp;{!! Form::label('studentName', 'What is the title of your video?') !!}
 				{!! Form::text('title', "", ['class' =>'form-control']) !!}
 			</div>
