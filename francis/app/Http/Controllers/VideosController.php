@@ -210,7 +210,7 @@ class VideosController extends Controller
 			$result = $s3Client->putObject(array(
 				'ACL' => 'public-read',
 				'Bucket' => 'stbons',
-				'Key' => $file->getClientOriginalName() '.jpeg',
+				'Key' => $file->getClientOriginalName() . '.jpeg',
 				'Body' => fopen('/tmp/' . $file->getClientOriginalName() . '.jpeg', 'r'),
 				'ContentType' => 'image/jpeg'
 			));
