@@ -198,8 +198,9 @@ class VideosController extends Controller
 	}
 	
 	function createThumbnail($file) {
+		$guid = com_create_guid();
 		$return = array();
-		$return[0] = '`which ffmpegthumbnailer` -s 1024 -i ' . $file->getRealPath() . ' -o /tmp/' . escapeshellarg($file->getClientOriginalName()) . '.jpeg';
+		$return[0] = '`which ffmpegthumbnailer` -s 1024 -i ' . $file->getRealPath() . ' -o /tmp/' . $guid  . '.jpeg';
 		$return[1] = shell_exec($return[0]);
 		
 		dd($return);
@@ -218,6 +219,6 @@ class VideosController extends Controller
 				'Body' => fopen('/tmp/' . $file->getClientOriginalName() . '.jpeg', 'r'),
 				'ContentType' => 'image/jpeg'
 			));
-		return $file->getClientOriginalName() . '.jpeg';
+		return $guid . '.jpeg';
 	}
 }
