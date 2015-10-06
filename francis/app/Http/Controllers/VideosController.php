@@ -214,6 +214,6 @@ class VideosController extends Controller
 				'Body' => fopen('/tmp/' . $file->getClientOriginalName() . '.jpeg', 'r'),
 				'ContentType' => 'image/jpeg'
 			));
-		return $file->getClientOriginalName() '.jpeg';
+		return $file->getClientOriginalName() . '.jpeg';
 	}
 }
