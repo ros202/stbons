@@ -8,13 +8,18 @@
   padding: 15px;
   margin: 0 auto;
 }
+
+.jumbotron {
+	padding-right: 20px;
+	padding-left: 20px
+}
 </style>
 
 <div class="container">
 
 	<div class="jumbotron">
 	  <h2 class="text-primary">Add your own video!</h2>
-	  <p> This page is where you can add your own science video to the website for the rest of the school to watch and give you their votes. <span class="text-primary"><i class="glyphicon glyphicon-heart"></i></span></p>
+	  <p style=""> This page is where you can add your own science video to the website for the rest of the school to watch and give you their votes. <span class="text-primary"><i class="glyphicon glyphicon-heart"></i></span></p>
 	  <p> Remember to give your video a title which says what it is about, and make sure you write in the big box what big science question your video answers. Get an adult to help you if you are unsure.</p>
 	  <p> Your video must be less than one minute long! All the videos on this website stop playing after one minute.</p>
 	</div>
