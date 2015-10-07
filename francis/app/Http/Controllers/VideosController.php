@@ -201,7 +201,7 @@ class VideosController extends Controller
 		$guid = uniqid();
 		$file->move('/tmp', $file->getClientOriginalName());
 		$return = array();
-		$return[0] = '`which ffmpegthumbnailer` -s 1024 -i /tmp/' . $file->getClientOriginalName() . ' -o /tmp/' . $guid  . '.jpeg';
+		$return[0] = '`ffmpeg` -i /tmp/' . $file->getClientOriginalName() . ' -vf  "thumbnail,scale=640:360" -frames:v 1 /tmp/' . $guid  . '.jpeg';
 		$return[1] = shell_exec($return[0]);
 
 		sleep(5);
