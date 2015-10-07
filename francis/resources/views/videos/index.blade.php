@@ -2,6 +2,13 @@
 
 @section('content')
 
+<style>
+.jumbotron {
+	padding-right: 10px;
+	padding-left: 10px
+}
+</style>
+
 <div class="container">
 
 	<div class="jumbotron">
