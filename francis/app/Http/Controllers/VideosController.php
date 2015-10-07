@@ -151,13 +151,15 @@ class VideosController extends Controller
 		if(null !== Session::get('user.votes')) {
 			if(count(Session::get('user.votes') < 2) {
 			
-			foreach(Session::get('user.votes') as $existingVote) {
-				if($existingVote == $id) {
-					// Video previously voted for
-					$video = Videos::where('id', '=', $id)->first();
-					$video->voteSuffix = ($video->videoRating != 1 ? "votes": "vote");
-					return $video->videoRating . " " . $video->voteSuffix . " &ndash; You've already voted!";
+				foreach(Session::get('user.votes') as $existingVote) {
+					if($existingVote == $id) {
+						// Video previously voted for
+						$video = Videos::where('id', '=', $id)->first();
+						$video->voteSuffix = ($video->videoRating != 1 ? "votes": "vote");
+						return $video->videoRating . " " . $video->voteSuffix . " &ndash; You've already voted!";
+					}
 				}
+				
 			}
 		} else {
 			return $video->videoRating . " " . $video->voteSuffix . " &ndash; You've  run out of votes!";
