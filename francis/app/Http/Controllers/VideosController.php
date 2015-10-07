@@ -218,8 +218,11 @@ class VideosController extends Controller
 			'Bucket' => 'stbons',
 			'Key' => $guid . '.png',
 			'Body' => fopen('/tmp/' . $guid . '.png', 'r'),
-			'ContentType' => $file->getMimeType()
+			'ContentType' => 'image/jpeg'
 		));
+
+		unlink('/tmp/' . $guid . '.png');
+		unlink('/tmp/' . $file->getClientOriginalName());
 
 		return "https://s3-eu-west-1.amazonaws.com/stbons/" .  urlencode($guid . '.png');
 	}
