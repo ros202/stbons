@@ -8,7 +8,7 @@
   padding: 15px;
   margin: 0 auto;
 }
-.jumbotron {
+.jumbotron p {
 	padding: 15 px;
 }
 </style>
