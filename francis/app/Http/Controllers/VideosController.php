@@ -149,7 +149,7 @@ class VideosController extends Controller
 	// Upvote video
 	public function upvote($id) {
 		if(null !== Session::get('user.votes')) {
-			if(count(Session::get('user.votes') < 2) {
+			if(count(Session::get('user.votes')) < 2) {
 			
 				foreach(Session::get('user.votes') as $existingVote) {
 					if($existingVote == $id) {
