@@ -64,7 +64,7 @@ class VideosController extends Controller
 				case("mp4"):						
 						$video = New Videos();
 						$video->videoFile = VideosController::saveFileToS3($videoFile);
-						//$video->videoThumbnail = VideosController::createThumbnail($videoFile);
+						$video->videoThumbnail = VideosController::createThumbnail($videoFile);
 						
 						$video->title = $request::input('title');
 						$video->studentName = $request::input('studentName');
