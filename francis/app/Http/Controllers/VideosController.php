@@ -201,15 +201,26 @@ class VideosController extends Controller
 		$guid = uniqid();
 		$file->move('/tmp', $file->getClientOriginalName());
 		$return = array();
-		$return[0] = '`ffmpeg` -i /tmp/' . $file->getClientOriginalName() . ' -vf  "thumbnail,scale=640:360" -frames:v 1 /tmp/' . $guid  . '.jpeg';
+		$return[0] = '/usr/local/bin/ffmpeg -i /tmp/' . $file->getClientOriginalName() . ' -vf  "thumbnail,scale=640:360" -frames:v 1 /tmp/' . $guid . '.png';
 		$return[1] = shell_exec($return[0]);
 
 		sleep(5);
-
-		dd($return);
-
-		//unlink('/tmp/' . $file->getClientOriginalName());
 	
-		return 'assets/' . $guid  . '.jpeg';
+		$s3Client = S3Client::factory(array(
+			'version' => 'latest',
+			'region' => 'eu-west-1',
+			'key'    => getenv('AWS_KEY'),
+			'secret' => getenv('AWS_SECRET')
+		));
+
+		$result = $s3Client->putObject(array(
+			'ACL' => 'public-read',
+			'Bucket' => 'stbons',
+			'Key' => $guid . '.png',
+			'Body' => fopen('/tmp/' . $guid . '.png', 'r'),
+			'ContentType' => $file->getMimeType()
+		));
+
+		return "https://s3-eu-west-1.amazonaws.com/stbons/" .  urlencode($guid . '.png');
 	}
 }
