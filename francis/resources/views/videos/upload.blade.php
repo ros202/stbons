@@ -8,6 +8,9 @@
   padding: 15px;
   margin: 0 auto;
 }
+.jumbotron {
+	padding: 15 px;
+}
 </style>
 
 <div class="container">
