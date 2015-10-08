@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="St Bonaventure's voting site">
+<meta name="description" content="St Bonaventure's Catholic Primary School, Bristol. Student voting site">
+<meta name="keywords" content="St Bons, Bonaventures, Bristol, Catholic, school, voting, videos">
 <meta name="author" content="Ross Harrison">
 <link rel="icon" type="image/png" href="logo.png" />
 
