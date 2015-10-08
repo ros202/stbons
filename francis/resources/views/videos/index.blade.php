@@ -13,9 +13,9 @@
 
 	<div class="jumbotron">
 	  <h2 class="text-primary">Hello, St Bon's!</h2>
-	  <p>These videos all answer a big science question, and are all less than a minute long. Watch them, and if you find one you really like, you can click the heart button <span class="text-primary"><i class="glyphicon glyphicon-heart"></i></span> to give it your vote! </p> 
-	  <p>You only have two votes, so use them well! If your video gets the most votes, then you win an iPad! <span class="text-danger"><i class="glyphicon glyphicon-gift"></i></span></p>
-	  <p>If you want to add your own science video here for everyone to watch and vote for, click here:&nbsp; <a class="btn btn-primary" href="/video/upload" role="button">Add my video!</a></p>
+	  <p>These videos all answer a big science question, and are all less than a minute long. Watch them, and if you find one you really like, you can click the heart button&nbsp;<span class="text-primary"><i class="glyphicon glyphicon-heart"></i></span> to give it your vote! </p> 
+	  <p>You only have two votes, so use them well! If your video gets the most votes, then you win an iPad!&nbsp;<span class="text-danger"><i class="glyphicon glyphicon-gift"></i></span></p>
+	  <p>If you want to add your own science video here for everyone to watch and vote for, click here:&nbsp;<a class="btn btn-primary" href="/video/upload" role="button">Add my video!</a></p>
 	</div>
 </div>
 
