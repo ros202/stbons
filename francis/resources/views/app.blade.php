@@ -9,7 +9,7 @@
 <meta name="author" content="Ross Harrison">
 <link rel="icon" type="image/png" href="logo.png" />
 
-<title>St. Bonaventure's</title>
+<title>St. Bon's Voting</title>
 
 <!-- load bootstrap from a cdn -->
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
