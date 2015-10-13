@@ -146,6 +146,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
 		Collective\Html\HtmlServiceProvider::class,
+		Weboap\Visitor\VisitorServiceProvider::class,
     ],
 
     /*
