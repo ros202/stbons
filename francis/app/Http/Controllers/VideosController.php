@@ -148,31 +148,33 @@ class VideosController extends Controller
 	
 	// Upvote video
 	public function upvote($id) {
-		$video = Videos::where('id', '=', $id)->first();
-		$video->voteSuffix = ($video->videoRating != 1 ? "votes": "vote");
-						
-		if(null !== Session::get('user.votes')) {
-			if(count(Session::get('user.votes')) < 2) {
-			
-				foreach(Session::get('user.votes') as $existingVote) {
-					if($existingVote == $id) {
-						// Video previously voted for
-						return $video->videoRating . " " . $video->voteSuffix . " &ndash; You've already voted!";
-					}
-				}
+		if(Config('app.voting_on')) {
+			$video = Videos::where('id', '=', $id)->first();
+			$video->voteSuffix = ($video->videoRating != 1 ? "votes": "vote");
+							
+			if(null !== Session::get('user.votes')) {
+				if(count(Session::get('user.votes')) < 2) {
 				
+					foreach(Session::get('user.votes') as $existingVote) {
+						if($existingVote == $id) {
+							// Video previously voted for
+							return $video->videoRating . " " . $video->voteSuffix . " &ndash; You've already voted!";
+						}
+					}
+					
+				}
+			} else {
+				return $video->videoRating . " " . $video->voteSuffix . " &ndash; You've  run out of votes!";
 			}
-		} else {
-			return $video->videoRating . " " . $video->voteSuffix . " &ndash; You've  run out of votes!";
+			
+			// Video not previously voted for
+			Videos::where('id', '=', $id)->increment('videoRating');
+			Session::push('user.votes', $id);
+			
+			$video = Videos::where('id', '=', $id)->first();
+			$video->voteSuffix = ($video->videoRating != 1 ? "votes": "vote");
+			return $video->videoRating . " " . $video->voteSuffix . " &ndash; You have " . 2 - count(Session::get('user.votes')) . " left";
 		}
-		
-		// Video not previously voted for
-		Videos::where('id', '=', $id)->increment('videoRating');
-		Session::push('user.votes', $id);
-		
-		$video = Videos::where('id', '=', $id)->first();
-		$video->voteSuffix = ($video->videoRating != 1 ? "votes": "vote");
-		return $video->videoRating . " " . $video->voteSuffix . " &ndash; You have " . 2 - count(Session::get('user.votes')) . " left";
 	}
 	
 	public function getUploadProgress() {

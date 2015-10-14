@@ -1,5 +1,7 @@
 @extends('app')
 
+@if(in_array($_SERVER['REMOTE_ADDR'], Config::get('app.ip_whitelist')))
+
 @section('content')
 
 <style>
@@ -70,3 +72,7 @@ body {
   </form>
 
 @endsection('content')
+
+@else 
+	
+@endif

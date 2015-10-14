@@ -12,12 +12,18 @@
 			<div class="row">
 				<div class="col-xs-12 col-sm-6 col-md-4 text-center"><h3 class="bg-primary">{{ $video->studentName }}, {{ $video->className }}</h3></div>
 				<div class="col-xs-12 col-sm-6 col-md-4 text-center"><h3 class="bg-primary"><i>{{ $video->title }}</i></h3></div>
-				<div class="col-xs-12 col-sm-12 col-md-4 text-center"><h3 class="bg-primary" id="rating">{{ $video->videoRating }}&nbsp;{{ $video->voteSuffix }}</h3></div>
+				@if(Config('app.voting_on'))
+					<div class="col-xs-12 col-sm-12 col-md-4 text-center"><h3 class="bg-primary" id="rating">{{ $video->videoRating }}&nbsp;{{ $video->voteSuffix }}</h3></div>
+				@endif
 			</div>
 		</div>
 		<div class="panel-body"><h5>{{ $video->videoDescription }}</h5></div>
 			<ul class="list-group">
-				<li class="list-group-item text-center"><h4 class="text-primary">&nbsp;If you really like this video, click the heart to give it your vote! &nbsp; <a onclick="upvote();" class="glyphicon glyphicon-heart"></a></h4><div id="videoRating"></li>
+				@if(Config('app.voting_on'))
+					<li class="list-group-item text-center"><h4 class="text-primary">&nbsp;If you really like this video, click the heart to give it your vote! &nbsp; <a onclick="upvote();" class="glyphicon glyphicon-heart"></a></h4><div id="videoRating"></li>
+				@else
+					<li class="list-group-item text-center"><h4 class="text-primary">&nbsp;In January, you will be able to click this heart to give this video your vote! &nbsp; <a class="glyphicon glyphicon-heart"></a></h4><div id="videoRating"></li>
+				@endif
 		</ul>
 </div>
 @endsection('content')
