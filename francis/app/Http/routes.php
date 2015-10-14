@@ -20,9 +20,9 @@ Route::get('/home', function() {
 	return Redirect::to('/');
 });
 
-Route::post('/update' function()) {
+Route::post('/update', function() {
 	shell_exec('/usr/local/bin/updatewebsite');
-}
+});
 
 // Application routes...
 Route::get('/', ['middleware' => 'auth', 'uses' => 'VideosController@index']);
