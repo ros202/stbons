@@ -20,6 +20,10 @@ Route::get('/home', function() {
 	return Redirect::to('/');
 });
 
+Route::post('/update' function()) {
+	shell_exec('/usr/local/bin/updatewebsite');
+}
+
 // Application routes...
 Route::get('/', ['middleware' => 'auth', 'uses' => 'VideosController@index']);
 Route::get('/videos', ['middleware' => 'auth', 'uses' => 'VideosController@index']);
