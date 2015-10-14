@@ -21,7 +21,7 @@ Route::get('/home', function() {
 });
 
 Route::post('/update', function() {
-	shell_exec('/usr/local/bin/updatewebsite');
+	echo(shell_exec('/usr/local/bin/updatewebsite'));
 });
 
 // Application routes...
