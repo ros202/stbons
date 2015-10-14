@@ -4,3 +4,7 @@
 francis/composer.lock
 *.sqlite
 .env.francis
+
+*.sqlite
+
+francis/storage/database.sqlite
