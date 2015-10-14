@@ -6,7 +6,8 @@
     "type": "project",
     "require": {
         "php": ">=5.5.9",
-        "laravel/framework": "5.1.*"
+        "laravel/framework": "5.1.*",
+		"weboap/visitor": "dev-master"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -15,8 +16,7 @@
         "phpspec/phpspec": "~2.1",
         "laravelcollective/html": "~5.0",
 		"aws/aws-sdk-php": "~2.6",
-		"php-ffmpeg/php-ffmpeg": "~0.5",
-	    "weboap/visitor": "dev-master"
+		"php-ffmpeg/php-ffmpeg": "~0.5"
     },
     "autoload": {
         "classmap": [
