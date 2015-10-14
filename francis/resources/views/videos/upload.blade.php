@@ -27,7 +27,7 @@
 {!! Form::open(array('url' => '/video/upload', 'files' => true)) !!}
 
 			<div class="form-group">
-				<span class="text-primary"><span class="glyphicon glyphicon-user"></span></span>&nbsp;{!! Form::label('studentName', 'What is your full name?') !!}
+				<span class="text-primary"><span class="glyphicon glyphicon-user"></span></span>&nbsp;{!! Form::label('studentName', 'What is your first name and surname?') !!}
 				{!! Form::text('studentName', "", ['class' =>'form-control']) !!}
 			</div>
 			
