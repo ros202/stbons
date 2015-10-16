@@ -17,6 +17,9 @@ body {
 .form-signin .checkbox {
   margin-bottom: 10px;
 }
+.form-signin-info {
+	margin-bottom: 15px;
+}
 .form-signin .checkbox {
   font-weight: normal;
 }
@@ -50,6 +53,7 @@ body {
 	<input type="hidden" name="_token" value="{{ csrf_token() }}">
 	
 	<h2 class="form-signin-heading">Please sign in</h2>
+	<h4 class="form-signin-info, text-muted">The signin details are on the letter about the Big Science Challenge</h4>
 	<label for="inputUsername" class="sr-only">Username</label>
 		<input type="username" id="email" name="email" class="form-control" placeholder="Email" required autofocus>
 	<label for="inputPassword" class="sr-only">Password</label>
