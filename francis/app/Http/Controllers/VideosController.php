@@ -77,6 +77,7 @@ class VideosController extends Controller
 						// Large files may be rejected if apache config is configured with a low limit:
 						// upload_max_filesize = 4096;
 						// post_max_size = 4096;
+						VideosController::slack($video->studentName . ' from ' . $video->className . ' has successfully uploaded a video called ' . $video->title . '. http://www.stbons.co.uk/video/show/' . $video->id . '/', 'StBons.co.uk', 'movie_camera');
 						return Redirect::to('video/show/' . $video->id)->with('message', 'Thank you for your video!');
 				break;
 				default:
@@ -222,17 +223,56 @@ class VideosController extends Controller
 			'secret' => getenv('AWS_SECRET')
 		));
 
-		$result = $s3Client->putObject(array(
-			'ACL' => 'public-read',
-			'Bucket' => 'stbons',
-			'Key' => $guid . '.png',
-			'Body' => fopen('/tmp/' . $guid . '.png', 'r'),
-			'ContentType' => 'image/jpeg'
-		));
+		if(file_exists('/tmp/' . $guid . '.png')) {
+			$result = $s3Client->putObject(array(
+				'ACL' => 'public-read',
+				'Bucket' => 'stbons',
+				'Key' => $guid . '.png',
+				'Body' => fopen('/tmp/' . $guid . '.png', 'r'),
+				'ContentType' => 'image/jpeg'
+			));
 
-		unlink('/tmp/' . $guid . '.png');
-		unlink('/tmp/' . $file->getClientOriginalName());
+			unlink('/tmp/' . $guid . '.png');
+			unlink('/tmp/' . $file->getClientOriginalName());
 
-		return "https://s3-eu-west-1.amazonaws.com/stbons/" .  urlencode($guid . '.png');
+			return "https://s3-eu-west-1.amazonaws.com/stbons/" .  urlencode($guid . '.png');
+		} else {
+			return "";
+		}
+	}
+	
+	public static function slack($message, $username, $icon) {
+
+		$payload = array(
+			'text'=>$message,
+			'username'=>$username,
+			'icon_emoji'=>$icon
+			);
+
+		$url = 'https://hooks.slack.com/services/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';
+		$fields = array(
+					'payload' => json_encode($payload)
+				);
+
+		//url-ify the data for the POST
+		$fields_string = "";
+		foreach($fields as $key=>$value) { $fields_string .= $key.'='.$value.'&'; }
+		rtrim($fields_string, '&');
+
+		//open connection
+		$ch = curl_init();
+
+		//set the url, number of POST vars, POST data
+		curl_setopt($ch,CURLOPT_URL, $url);
+		curl_setopt($ch,CURLOPT_POST, count($fields));
+		curl_setopt($ch,CURLOPT_POSTFIELDS, $fields_string);
+
+		//execute post
+		$result = curl_exec($ch);
+
+		//close connection
+		curl_close($ch);
 	}
 }
+
+
