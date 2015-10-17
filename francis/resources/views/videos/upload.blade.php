@@ -54,6 +54,9 @@
 			
 			<div class="form-group">
 				<span class="text-primary"><span class="glyphicon glyphicon-plus"></span></span>&nbsp;{!! Form::submit('Add your video!') !!}
+				<br>
+				<h4 class='text-muted'>Your video might take a minute to upload. Just wait, don't refresh your browser!</h4>
+
 			</div>
 
 {!! Form::close() !!}
