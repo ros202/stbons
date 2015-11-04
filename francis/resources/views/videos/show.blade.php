@@ -25,7 +25,7 @@
 					<li class="list-group-item text-center"><h4 class="text-primary">&nbsp;In January, you will be able to click this heart to give this video your vote! &nbsp; <a class="glyphicon glyphicon-heart"></a></h4><div id="videoRating"></li>
 				@endif
 				@if(Auth::user()->admin == 1) 
-					<a href="/video/delete/{{ $video->id }}" class="glyphicon glyphicon-remove"></a>
+					<a href="/video/delete/{{ $video->id }}" onclick="return confirm('Are you sure you want to delete this video?')" class="glyphicon glyphicon-remove"></a>
 				@endif
 		</ul>
 </div>
