@@ -6,6 +6,7 @@ use Request;
 use Session;
 use Illuminate\Support\Facades\Redirect;
 
+use Auth;
 use App\Videos;
 
 use Aws\S3\S3Client;
@@ -144,7 +145,12 @@ class VideosController extends Controller
      */
     public function destroy($id)
     {
-        //
+		if(Auth::user()->admin == 1) {
+			$video = Videos::where('id', '=', $id)->first();
+			$video->delete();
+		}
+		
+		return Redirect::to('/');
     }
 	
 	// Upvote video
