@@ -220,7 +220,7 @@ class VideosController extends Controller
 		$return[0] = '/usr/local/bin/ffmpeg -i /tmp/' . $file->getClientOriginalName() . ' -vf  "thumbnail,scale=640:360" -frames:v 1 /tmp/' . $guid . '.png';
 		$return[1] = shell_exec($return[0]);
 
-		sleep(5);
+		sleep(30);
 	
 		$s3Client = S3Client::factory(array(
 			'version' => 'latest',
