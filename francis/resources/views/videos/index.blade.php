@@ -19,7 +19,7 @@
 		  <p>If you want to add your own science video here for everyone to watch and vote for, click here:&nbsp;<a class="btn btn-primary" href="/video/upload" role="button">Add my video!</a></p>
 	  @else
 		  <p>These videos all answer a big science question, and are all less than a minute long. Watch as many of them as you can, and remember the ones you like most.</P>
-		  <p>In January, you will be able to give your vote to your two favourite videos. If your video gets the most votes, then you win an iPad!&nbsp;<span class="text-danger"><i class="glyphicon glyphicon-gift"></i></span></p>
+		  <p>In January, you will be able to give your vote to your two favourite videos. If your video gets the most votes, then you win an iPad Air!&nbsp;<span class="text-danger"><i class="glyphicon glyphicon-gift"></i></span></p>
 		  <p>If you want to add your own science video here for everyone to watch and vote for, click here:&nbsp;<a class="btn btn-primary" href="/video/upload" role="button">Add my video!</a></p>
 	  @endif
 	</div>
