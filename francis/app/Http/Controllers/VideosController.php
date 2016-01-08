@@ -169,11 +169,10 @@ class VideosController extends Controller
 							return $video->videoRating . " " . $video->voteSuffix . " &ndash; You've already voted!";
 						}
 					}
-					
+				} else {
+					return $video->videoRating . " " . $video->voteSuffix . " &ndash; You've  run out of votes!";
 				}
-			} else {
-				return $video->videoRating . " " . $video->voteSuffix . " &ndash; You've  run out of votes!";
-			}
+			} 
 			
 			// Video not previously voted for
 			Videos::where('id', '=', $id)->increment('videoRating');
@@ -182,7 +181,6 @@ class VideosController extends Controller
 			$video = Videos::where('id', '=', $id)->first();
 			$video->voteSuffix = ($video->videoRating != 1 ? "votes": "vote");
 			return $video->videoRating . " " . $video->voteSuffix . " &ndash; You have " . 2 - count(Session::get('user.votes')) . " left";
-		}
 	}
 	
 	public function getUploadProgress() {
