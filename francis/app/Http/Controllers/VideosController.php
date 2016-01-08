@@ -180,7 +180,7 @@ class VideosController extends Controller
 			
 			$video = Videos::where('id', '=', $id)->first();
 			$video->voteSuffix = ($video->videoRating != 1 ? "votes": "vote");
-			return $video->videoRating . " " . $video->voteSuffix . " &ndash; You have " . 2 - count(Session::get('user.votes')) . " left";
+			return $video->videoRating . " " . $video->voteSuffix . " &ndash; Thanks for your vote!";
 		}
 	}
 	
