@@ -27,8 +27,8 @@ Route::post('/update', function() {
 // Application routes...
 Route::get('/', ['middleware' => 'auth', 'uses' => 'VideosController@index']);
 Route::get('/videos', ['middleware' => 'auth', 'uses' => 'VideosController@index']);
-Route::get('/video/show/{id}', 'VideosController@show');
-Route::get('/video/upvote/{id}', 'VideosController@upvote');
-Route::get('/video/delete/{id}', 'VideosController@destroy');
+Route::get('/video/show/{id}', ['middleware' => 'auth', 'uses' => 'VideosController@show']);
+Route::post('/video/upvote/{id}', ['middleware' => ['throttle:2,1', 'auth'], 'uses' => 'VideosController@upvote']);
+Route::get('/video/delete/{id}', ['middleware' => 'auth', 'uses' => 'VideosController@destroy']);
 Route::get('/video/upload', ['middleware' => 'auth', 'uses' => 'VideosController@create']);
-Route::post('/video/upload', 'VideosController@store');
+Route::post('/video/upload', ['middleware' => 'auth', 'uses' => 'VideosController@store']);

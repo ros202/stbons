@@ -48,7 +48,8 @@ function upvote() {
 		}
 	}
 	
-	xmlhttp.open("GET","/video/upvote/{{ $video->id }}", true);
+	xmlhttp.open("POST","/video/upvote/{{ $video->id }}", true);
+	xmlhttp.setRequestHeader("X-CSRF-Token", "{!! csrf_token() !!}");
 	xmlhttp.send();
 }
 
