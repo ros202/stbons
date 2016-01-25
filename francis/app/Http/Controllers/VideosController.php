@@ -64,6 +64,7 @@ class VideosController extends Controller
 				case("m4v"):
 				case("mp4"):
 				case("wmv"):
+				case("avi"):
 						$video = New Videos();
 						$video->videoFile = VideosController::saveFileToS3($videoFile);
 						$video->videoThumbnail = VideosController::createThumbnail($videoFile);
