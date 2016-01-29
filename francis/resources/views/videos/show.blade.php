@@ -12,8 +12,10 @@
 			<div class="row">
 				<div class="col-xs-12 col-sm-6 col-md-4 text-center"><h3 class="bg-primary">{{ $video->studentName }}, {{ $video->className }}</h3></div>
 				<div class="col-xs-12 col-sm-6 col-md-4 text-center"><h3 class="bg-primary"><i>{{ $video->title }}</i></h3></div>
-				@if(Config('app.voting_on'))
+				@if(Auth::user()->admin == 1)
 					<div class="col-xs-12 col-sm-12 col-md-4 text-center"><h3 class="bg-primary" id="rating">{{ $video->videoRating }}&nbsp;{{ $video->voteSuffix }}</h3></div>
+				@else
+					<div class="col-xs-12 col-sm-12 col-md-4 text-center"><h3 class="bg-primary" id="rating">Validating votes...</h3></div>
 				@endif
 			</div>
 		</div>
