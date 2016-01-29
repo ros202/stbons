@@ -24,7 +24,7 @@
 				@if(Config('app.voting_on'))
 					<li class="list-group-item text-center"><h4 class="text-primary">&nbsp;If you really like this video, click the heart to give it your vote! &nbsp; <a onclick="upvote();" class="glyphicon glyphicon-heart"></a></h4><div id="videoRating"></li>
 				@else
-					<li class="list-group-item text-center"><h4 class="text-primary">&nbsp;In January, you will be able to click this heart to give this video your vote! &nbsp; <a class="glyphicon glyphicon-heart"></a></h4><div id="videoRating"></li>
+					<li class="list-group-item text-center"><h4 class="text-primary">&nbsp; Voting is over and all votes are being validated.</h4><div id="videoRating"></li>
 				@endif
 				@if(Auth::user()->admin == 1) 
 					<a href="/video/delete/{{ $video->id }}" onclick="return confirm('Are you sure you want to delete this video?')" class="glyphicon glyphicon-remove"></a>
