@@ -27,7 +27,7 @@
 					<li class="list-group-item text-center"><h4 class="text-primary">&nbsp; Voting is over and all votes are being validated.</h4><div id="videoRating"></li>
 				@endif
 				@if(Auth::user()->admin == 1) 
-					<a href="/video/delete/{{ $video->id }}" onclick="return confirm('Are you sure you want to delete this video?')" class="glyphicon glyphicon-remove"></a>
+					<a href="/video/delete/{{ $video->id }}" onclick="return confirm('Are you sure you want to delete this video?')" class="glyphicon glyphicon-remove"></a> &nbsp;&nbsp;&nbsp;&nbsp; <a onclick="upvote();" class="glyphicon glyphicon-heart"></a>
 				@endif
 		</ul>
 </div>
