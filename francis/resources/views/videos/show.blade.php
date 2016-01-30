@@ -21,7 +21,7 @@
 		</div>
 		<div class="panel-body"><h5>{{ $video->videoDescription }}</h5></div>
 			<ul class="list-group">
-				@if(Config('app.voting_on'))
+				@if(Config('app.voting_on') || Auth::user()->admin == 1)
 					<li class="list-group-item text-center"><h4 class="text-primary">&nbsp;If you really like this video, click the heart to give it your vote! &nbsp; <a onclick="upvote();" class="glyphicon glyphicon-heart"></a></h4><div id="videoRating"></li>
 				@else
 					<li class="list-group-item text-center"><h4 class="text-primary">&nbsp; Voting is over and all votes are being validated.</h4><div id="videoRating"></li>

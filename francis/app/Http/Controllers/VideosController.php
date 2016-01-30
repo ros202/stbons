@@ -157,7 +157,7 @@ class VideosController extends Controller
 	
 	// Upvote video
 	public function upvote($id) {
-		if(Config('app.voting_on')) {
+		if(Config('app.voting_on') || Auth::user()->admin==1) {
 			$video = Videos::where('id', '=', $id)->first();
 			$video->voteSuffix = ($video->videoRating != 1 ? "votes": "vote");
 			
