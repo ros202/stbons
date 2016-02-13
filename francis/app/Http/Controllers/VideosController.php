@@ -25,7 +25,20 @@ class VideosController extends Controller
     public function index()
     {
         //
-		$videos = Videos::orderBy('className', 'DESC')->get();
+		$videoIds = array();
+		$videos = array();
+		$videos_rec = Videos::where('className', 'LIKE', 'R%')->orderBy('className', 'ASC')->get();
+		foreach($videos_rec as $video) {
+			array_push($videos, $video);
+			array_push($videoIds, $video->id);
+		}
+		
+		$videos_nonrec = Videos::whereNotIn('id', $videoIds)->orderBy('className', 'ASC')->get();
+		foreach($videos_nonrec as $video) {
+			array_push($videos, $video);
+		}
+		
+		
 		foreach($videos as $video) {
 			if(!substr($video->videoThumbnail, 0, 4) == "http") {
 				$video->videoThumbnail = "http://" . $_SERVER['SERVER_NAME'] . ":" . $_SERVER['SERVER_PORT'] . "/" . $video->videoThumbnail;
