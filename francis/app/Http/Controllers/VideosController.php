@@ -25,7 +25,7 @@ class VideosController extends Controller
     public function index()
     {
         //
-		$videos = Videos::orderBy('videoRating', 'DESC')->get();
+		$videos = Videos::orderBy('className', 'DESC')->get();
 		foreach($videos as $video) {
 			if(!substr($video->videoThumbnail, 0, 4) == "http") {
 				$video->videoThumbnail = "http://" . $_SERVER['SERVER_NAME'] . ":" . $_SERVER['SERVER_PORT'] . "/" . $video->videoThumbnail;
@@ -172,7 +172,7 @@ class VideosController extends Controller
 							}
 						}
 					} else {
-						return $video->videoRating . " " . $video->voteSuffix . " &ndash; You've  run out of votes!";
+						return $video->videoRating . " " . $video->voteSuffix . " &ndash; You've run out of votes!";
 					}
 				} 
 			}

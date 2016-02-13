@@ -30,5 +30,5 @@ Route::get('/videos', ['middleware' => 'auth', 'uses' => 'VideosController@index
 Route::get('/video/show/{id}', ['middleware' => 'auth', 'uses' => 'VideosController@show']);
 Route::post('/video/upvote/{id}', ['middleware' => 'auth', 'uses' => 'VideosController@upvote']);
 Route::get('/video/delete/{id}', ['middleware' => 'auth', 'uses' => 'VideosController@destroy']);
-Route::get('/video/upload', ['middleware' => 'auth', 'uses' => 'VideosController@create']);
-Route::post('/video/upload', ['middleware' => 'auth', 'uses' => 'VideosController@store']);
+//Route::get('/video/upload', ['middleware' => 'auth', 'uses' => 'VideosController@create']);
+//Route::post('/video/upload', ['middleware' => 'auth', 'uses' => 'VideosController@store']);

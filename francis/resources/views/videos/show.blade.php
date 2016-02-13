@@ -14,8 +14,6 @@
 				<div class="col-xs-12 col-sm-6 col-md-4 text-center"><h3 class="bg-primary"><i>{{ $video->title }}</i></h3></div>
 				@if(Auth::user()->admin == 1)
 					<div class="col-xs-12 col-sm-12 col-md-4 text-center"><h3 class="bg-primary" id="rating">{{ $video->videoRating }}&nbsp;{{ $video->voteSuffix }}</h3></div>
-				@else
-					<div class="col-xs-12 col-sm-12 col-md-4 text-center"><h3 class="bg-primary" id="rating">Validating votes...</h3></div>
 				@endif
 			</div>
 		</div>
@@ -23,8 +21,6 @@
 			<ul class="list-group">
 				@if(Config('app.voting_on') || Auth::user()->admin == 1)
 					<li class="list-group-item text-center"><h4 class="text-primary">&nbsp;If you really like this video, click the heart to give it your vote! &nbsp; <a onclick="upvote();" class="glyphicon glyphicon-heart"></a></h4><div id="videoRating"></li>
-				@else
-					<li class="list-group-item text-center"><h4 class="text-primary">&nbsp; Voting is over and all votes are being validated.</h4><div id="videoRating"></li>
 				@endif
 				@if(Auth::user()->admin == 1) 
 					<a href="/video/delete/{{ $video->id }}" onclick="return confirm('Are you sure you want to delete this video?')" class="glyphicon glyphicon-remove"></a>
